@@ -24,7 +24,7 @@ struct EmptyLineWhitespaceRule: Rule {
                 )
             )
         }.filter {
-            $0.onlyWhitespace
+            $0.trailingWhitespaceCount > 0 && $0.onlyWhitespace
         }.map {
             StyleViolation(type: .EmptyLineWhitespace,
                 location: Location(file: file.path, line: $0.index),

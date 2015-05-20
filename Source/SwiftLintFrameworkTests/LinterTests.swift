@@ -298,6 +298,10 @@ class LinterTests: XCTestCase {
             "whitespace characters")])
     }
     
+    func testLinesCanContainOnlyNewLine() {
+        XCTAssertEqual(violations("//\n\nswift\n"), [])
+    }
+    
     func testForceCasting() {
         XCTAssertEqual(violations("NSNumber() as? Int\n"), [])
         XCTAssertEqual(violations("// NSNumber() as! Int\n"), [])
