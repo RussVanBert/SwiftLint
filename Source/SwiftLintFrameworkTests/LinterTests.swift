@@ -290,8 +290,12 @@ class LinterTests: XCTestCase {
             "whitespace characters")])
     }
 
-    func testLinesCanContainOnlyWhitespace() {
-        XCTAssertEqual(violations("//\n  \n"), [])
+    func testLinesCannotContainOnlyWhitespace() {
+        XCTAssertEqual(violations("//\n \n"), [StyleViolation(type: .EmptyLineWhitespace,
+            location: Location(file: nil, line: 2),
+            severity: .Medium,
+            reason: "Line #2 is a blank line containing whitespace: currently has 1 " +
+            "whitespace characters")])
     }
     
     func testForceCasting() {

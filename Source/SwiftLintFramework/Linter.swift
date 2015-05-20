@@ -18,6 +18,7 @@ public struct Linter {
             [
                 LineLengthRule().validateFile(file),
                 LeadingWhitespaceRule().validateFile(file),
+                EmptyLineWhitespaceRule().validateFile(file),
                 TrailingWhitespaceRule().validateFile(file),
                 TrailingNewlineRule().validateFile(file),
                 ForceCastRule().validateFile(file),
