@@ -26,6 +26,10 @@ extension String {
     func countOfTailingCharactersInSet(characterSet: NSCharacterSet) -> Int {
         return String(reverse(self)).countOfLeadingCharactersInSet(characterSet)
     }
+    
+    func only(characterSet: NSCharacterSet) -> Bool {
+        return String(self).stringByTrimmingCharactersInSet(characterSet).isEmpty
+    }
 }
 
 extension NSString {

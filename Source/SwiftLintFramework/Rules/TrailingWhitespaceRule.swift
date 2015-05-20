@@ -18,10 +18,13 @@ struct TrailingWhitespaceRule: Rule {
                 index: line.index,
                 trailingWhitespaceCount: line.content.countOfTailingCharactersInSet(
                     NSCharacterSet.whitespaceCharacterSet()
+                ),
+                onlyWhitespace: line.content.only(
+                    NSCharacterSet.whitespaceCharacterSet()
                 )
             )
         }.filter {
-            $0.trailingWhitespaceCount > 0
+            $0.trailingWhitespaceCount > 0 && !$0.onlyWhitespace
         }.map {
             StyleViolation(type: .TrailingWhitespace,
                 location: Location(file: file.path, line: $0.index),
